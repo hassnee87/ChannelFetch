@@ -84,14 +84,8 @@ def fetch_ptv_home_schedule():
         options.add_argument('--disable-blink-features=AutomationControlled')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
-        # Headless toggle via environment variable HEADLESS=1
-        headless = os.environ.get('HEADLESS', '0').lower() in ('1', 'true', 'yes')
-        if headless:
-            options.add_argument('--headless=new')
-            options.add_argument('--disable-gpu')
-            options.add_argument('--window-size=1280,1024')
-        else:
-            options.add_argument('--start-maximized')
+        # IMPORTANT: run headful to increase success rate
+        # options.add_argument('--headless=new')  # comment out to run visible
         options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36')
 
         print("Launching undetected Chrome...")
